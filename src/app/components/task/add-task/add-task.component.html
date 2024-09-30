@@ -1,0 +1,83 @@
+<h3>Agregar nueva tarea</h3>
+<div class="add-task-form" [formGroup]="formTask">
+  <!-- name of task -->
+  <mat-form-field appearance="fill">
+    <mat-label>Nombre de la tarea</mat-label>
+    <input
+      matInput
+      placeholder="Ingrese nombre de la tarea"
+      formControlName="name"
+    />
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+
+  <!-- date of task -->
+  <mat-form-field color="accent">
+    <mat-label>Fecha límite de tarea</mat-label>
+    <input
+      matInput
+      placeholder=""
+      [matDatepicker]="picker1"
+      formControlName="date"
+      [min]="dateInit"
+    />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle
+      matIconSuffix
+      [for]="picker1"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+
+  <div formArrayName="person">
+    <div *ngFor="let personForm of person.controls; let i = index">
+      <div class="person-form-row" [formGroupName]="i">
+        <!-- name of person -->
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre de la persona</mat-label>
+          <input
+            matInput
+            placeholder="Ingrese nombre de la persona"
+            formControlName="name"
+          />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+
+        <!-- age of person -->
+        <mat-form-field appearance="fill">
+          <mat-label>Edad</mat-label>
+          <input
+            matInput
+            placeholder="ingrese edad de la persona"
+            formControlName="age"
+            type="number"
+          />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+
+        <div formArrayName="skill">
+          <div *ngFor="let skillForm of skill.controls; let y = index">
+            <div [formGroupName]="y">
+              <!-- name of person -->
+              <mat-form-field appearance="fill">
+                <mat-label>Habilidad</mat-label>
+                <input
+                  matInput
+                  placeholder="Ingrese habilidad"
+                  formControlName="habilidades"
+                />
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ formTask.value | json }}
+{{ formPerson.value | json }}

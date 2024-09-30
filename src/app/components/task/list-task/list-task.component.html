@@ -1,0 +1,55 @@
+<div class="content">
+  <h1>Lista de tareas</h1>
+  <div class="actions">
+    <div>
+      <mat-form-field>
+        <mat-label>Favorite food</mat-label>
+        <mat-select [(ngModel)]="selectedValue" name="food">
+          <mat-option *ngFor="let item of listFilter" [value]="item">
+            {{ item }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button color="primary" (click)="addTask()">
+        Add tarea
+      </button>
+    </div>
+  </div>
+  <div class="content-list">
+    <div *ngFor="let task of tasks" class="list">
+      <mat-card>
+        <mat-card-content class="card-content">
+          <div class="task">
+            <div class="date-content">
+              <div class="date">{{ task.date | date : "mediumDate" }}</div>
+            </div>
+            <div class="body-task">
+              <div class="title">{{ task.name }}</div>
+              <div>
+                <strong class="asociadas">Personas asociadas:</strong>
+                <div class="persons">
+                  <div *ngFor="let person of task.persons">
+                    <div class="person">
+                      <li class="name">
+                        {{ person.name | titlecase }} ({{ person.age }})
+                      </li>
+                    </div>
+                    <div class="skills">habilidades: {{ person.skills }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="check">
+              <mat-checkbox
+                class="example-margin"
+                [checked]="task.completed"
+              ></mat-checkbox>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
