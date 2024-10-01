@@ -1,5 +1,9 @@
 # Task
 
+Funcionamiento de plataforma web:
+run json como servidor: npm run server, este correra por el puerto 3000
+compilar proyecto angular: ng serve, funciona por el puerto 4200
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
 
 ## Development server
