@@ -1,6 +1,13 @@
-import { createSelector } from '@ngrx/store';
-import { AppState } from '../../app.state';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-export const selectAllTask = (state: AppState) => state.tasks;
+import { TaskModel } from '../../interface/task.interface';
 
-export const selectGuests = createSelector(selectAllTask, (task) => task);
+const getTaskState = createFeatureSelector<TaskModel>('task');
+
+export const getTaskList = createSelector(getTaskState, (state) => {
+  return state.list;
+});
+
+export const getTask = createSelector(getTaskState, (state) => {
+  return state.taskObj;
+});

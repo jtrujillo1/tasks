@@ -6,16 +6,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TaskReducer } from './core/store/reducers/task.reducer';
+import { TaskEffects } from './core/store/effects/task.effects';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { notificationEffects } from './core/store/common/notification/notification.effects';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    MatSnackBarModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    EffectsModule.forRoot([]),
+    HttpClientModule,
+    EffectsModule.forRoot([TaskEffects, notificationEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ task: TaskReducer }),
   ],
   providers: [],
   bootstrap: [AppComponent],

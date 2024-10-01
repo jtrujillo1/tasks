@@ -1,4 +1,4 @@
-<h3>Agregar nueva tarea</h3>
+<h1 class="add-task">{{ data.title }} tarea</h1>
 <div class="add-task-form" [formGroup]="formTask">
   <!-- name of task -->
   <mat-form-field appearance="fill">
@@ -29,19 +29,38 @@
     <mat-datepicker #picker1></mat-datepicker>
   </mat-form-field>
 
-  <div formArrayName="person">
+  <!-- array de personas -->
+  <div formArrayName="persons" class="form-person">
+    <div class="subtitle">
+      <h3 class="text">Personas:</h3>
+      <button mat-mini-fab (click)="addPerson()" class="button">
+        <mat-icon class="icon" fontIcon="add" color="primary"></mat-icon>
+      </button>
+    </div>
+
     <div *ngFor="let personForm of person.controls; let i = index">
       <div class="person-form-row" [formGroupName]="i">
+        <mat-divider class="divider"></mat-divider>
+        <div class="person-delete">
+          <span>Persona: {{ i + 1 }}</span>
+          <button
+            mat-mini-fab
+            (click)="deletePerson(i)"
+            class="button"
+            *ngIf="person.controls.length > 1"
+          >
+            <mat-icon class="icon" fontIcon="delete" color="warn"></mat-icon>
+          </button>
+        </div>
         <!-- name of person -->
         <mat-form-field appearance="fill">
-          <mat-label>Nombre de la persona</mat-label>
+          <mat-label>Nombre</mat-label>
           <input
             matInput
             placeholder="Ingrese nombre de la persona"
             formControlName="name"
           />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-          <mat-hint>Hint</mat-hint>
         </mat-form-field>
 
         <!-- age of person -->
@@ -54,30 +73,56 @@
             type="number"
           />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-          <mat-hint>Hint</mat-hint>
         </mat-form-field>
 
-        <div formArrayName="skill">
-          <div *ngFor="let skillForm of skill.controls; let y = index">
+        <div class="subtitle">
+          <h3 class="text">Habilidades:</h3>
+          <button mat-mini-fab (click)="addSkill(i)" class="button">
+            <mat-icon class="icon" fontIcon="add" color="primary"></mat-icon>
+          </button>
+        </div>
+        <!-- array de skills -->
+        <div formArrayName="skills">
+          <div *ngFor="let skillForm of personSkill(i).controls; let y = index">
+            <span>Habilida: {{ y + 1 }}</span>
             <div [formGroupName]="y">
-              <!-- name of person -->
-              <mat-form-field appearance="fill">
-                <mat-label>Habilidad</mat-label>
-                <input
-                  matInput
-                  placeholder="Ingrese habilidad"
-                  formControlName="habilidades"
-                />
-                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                <mat-hint>Hint</mat-hint>
-              </mat-form-field>
+              <div class="skill">
+                <!-- name of skill -->
+                <div class="text">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Habilidad</mat-label>
+                    <input
+                      matInput
+                      placeholder="Ingrese habilidad"
+                      formControlName="name"
+                    />
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                  </mat-form-field>
+                </div>
+
+                <!-- button delete skills-->
+                <button
+                  mat-icon-button
+                  (click)="deleteSkill(i, y)"
+                  class="button"
+                >
+                  <mat-icon
+                    class="icon"
+                    fontIcon="delete"
+                    color="warn"
+                  ></mat-icon>
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <div class="buttons">
+    <button mat-raised-button color="primary" (click)="addTask()">
+      Guardar tarea
+    </button>
+    <button mat-raised-button color="warn" (click)="close()">Cancelar</button>
+  </div>
 </div>
-
-{{ formTask.value | json }}
-{{ formPerson.value | json }}

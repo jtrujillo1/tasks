@@ -7,3 +7,9 @@ export interface Task {
   completed: boolean;
   persons: Person[];
 }
+
+export interface TaskModel {
+  list: Task[];
+  taskObj: Task;
+  errorMessage: string;
+}

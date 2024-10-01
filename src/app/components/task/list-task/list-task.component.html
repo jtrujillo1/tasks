@@ -13,39 +13,56 @@
     </div>
     <div>
       <button mat-raised-button color="primary" (click)="addTask()">
-        Add tarea
+        Nueva tarea
       </button>
     </div>
   </div>
   <div class="content-list">
     <div *ngFor="let task of tasks" class="list">
-      <mat-card>
+      <mat-card class="card">
         <mat-card-content class="card-content">
           <div class="task">
-            <div class="date-content">
-              <div class="date">{{ task.date | date : "mediumDate" }}</div>
-            </div>
             <div class="body-task">
-              <div class="title">{{ task.name }}</div>
+              <div class="title">
+                <div class="text">{{ task.name }}</div>
+                <div class="date-content">
+                  <div class="date">{{ task.date | date : "mediumDate" }}</div>
+                </div>
+              </div>
               <div>
                 <strong class="asociadas">Personas asociadas:</strong>
                 <div class="persons">
                   <div *ngFor="let person of task.persons">
                     <div class="person">
                       <li class="name">
-                        {{ person.name | titlecase }} ({{ person.age }})
+                        {{ person.name | titlecase }} ({{ person.age }} Años)
                       </li>
                     </div>
-                    <div class="skills">habilidades: {{ person.skills }}</div>
+                    <div class="skills">
+                      habilidades:
+                      <div *ngFor="let skill of person.skills">
+                        {{ skill.name }}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="check">
+            <div class="actions">
               <mat-checkbox
                 class="example-margin"
                 [checked]="task.completed"
+                (change)="completeTask(task)"
               ></mat-checkbox>
+
+              <button
+                mat-icon-button
+                color="accent"
+                aria-label="Example icon button with a menu icon"
+                (click)="editTask(task)"
+              >
+                <mat-icon fontIcon="edit"></mat-icon>
+              </button>
             </div>
           </div>
         </mat-card-content>

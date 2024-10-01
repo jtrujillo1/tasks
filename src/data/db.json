@@ -1,0 +1,71 @@
+{
+  "task": [
+    {
+      "id": 1,
+      "name": "Prueba caso de uso",
+      "date": "2024-10-02T05:00:00.000Z",
+      "persons": [
+        {
+          "name": "John Elias",
+          "age": 28,
+          "skills": [
+            {
+              "name": "QA Tester"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Home plataforma web",
+      "date": "2024-10-07T05:00:00.000Z",
+      "persons": [
+        {
+          "name": "Elias Figueroa",
+          "age": 30,
+          "skills": [
+            {
+              "name": "React"
+            },
+            {
+              "name": "vueJs"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "asdadsda",
+      "date": "2024-10-01T00:53:39.986Z",
+      "persons": [
+        {
+          "name": "adsdad",
+          "age": 455,
+          "skills": [
+            {
+              "name": "asda"
+            }
+          ]
+        }
+      ],
+      "id": 3
+    },
+    {
+      "name": "adasdads",
+      "date": "2024-10-01T01:02:57.198Z",
+      "persons": [
+        {
+          "name": "adsads",
+          "age": 45,
+          "skills": [
+            {
+              "name": "adsad"
+            }
+          ]
+        }
+      ],
+      "id": 4
+    }
+  ]
+}
