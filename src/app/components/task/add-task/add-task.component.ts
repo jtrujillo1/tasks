@@ -197,8 +197,8 @@ export class AddTaskComponent {
       return `El campo es requerido`;
     }
 
-    if (error.controls[control].hasError('minLength')) {
-      return `El campo debe tener minimo ${error.controls[control].errors.min}`;
+    if (error.controls[control].hasError('minlength')) {
+      return `El campo debe tener minimo ${error.controls[control].errors.minlength.requiredLength}`;
     }
 
     return '';

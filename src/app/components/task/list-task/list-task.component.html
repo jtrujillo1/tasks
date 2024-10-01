@@ -22,6 +22,9 @@
     </div>
   </div>
   <div class="content-list">
+    <div *ngIf="tasksFilter.length == 0">
+      <h3>No hay tareas programadas,agregar tarea.</h3>
+    </div>
     <div *ngFor="let task of tasksFilter" class="list">
       <mat-card class="card">
         <mat-card-content class="card-content">

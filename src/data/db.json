@@ -3,93 +3,53 @@
     {
       "id": 1,
       "completed": true,
-      "name": "Prueba caso de uso",
-      "date": "2024-10-02T05:00:00.000Z",
+      "name": "programar un 2 bots",
+      "date": "2024-10-04T05:00:00.000Z",
       "persons": [
         {
-          "name": "John Elias",
-          "age": 28,
+          "name": "juan rodriguez",
+          "age": 18,
           "skills": [
             {
-              "name": "QA Tester"
-            },
-            {
-              "name": "ad"
+              "name": "python"
             }
           ]
         }
       ]
     },
     {
-      "id": 2,
-      "name": "Home plataforma web",
-      "date": "2024-10-07T05:00:00.000Z",
+      "name": "Implentar sns aws",
+      "date": "2024-10-15T05:00:00.000Z",
       "persons": [
         {
-          "name": "Elias Figueroa",
-          "age": 30,
+          "name": "Yinela Renteria",
+          "age": 18,
           "skills": [
             {
-              "name": "React"
-            },
-            {
-              "name": "vueJs"
+              "name": "Cloud"
             }
           ]
         }
       ],
+      "id": 2,
       "completed": true
     },
     {
-      "name": "asdadsda",
-      "date": "2024-10-01T00:53:39.986Z",
-      "completed": true,
+      "name": "implementar azure ",
+      "date": "2024-10-15T05:00:00.000Z",
       "persons": [
         {
-          "name": "adsdad",
-          "age": 455,
+          "name": "edrfdadsd",
+          "age": 18,
           "skills": [
             {
-              "name": "asda"
+              "name": "cloud azure"
             }
           ]
         }
       ],
-      "id": 3
-    },
-    {
-      "name": "adasdads",
-      "date": "2024-10-01T01:02:57.198Z",
-      "completed": false,
-      "persons": [
-        {
-          "name": "adsads",
-          "age": 45,
-          "skills": [
-            {
-              "name": "adsad"
-            }
-          ]
-        }
-      ],
-      "id": 4
-    },
-    {
-      "name": "adsad",
-      "date": "2024-10-01T03:59:42.681Z",
-      "completed": false,
-      "persons": [
-        {
-          "name": "asdasa",
-          "age": 34,
-          "skills": [
-            {
-              "name": "asad"
-            }
-          ]
-        }
-      ],
-      "id": 5
+      "id": 3,
+      "completed": true
     }
   ]
 }
