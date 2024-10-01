@@ -4,7 +4,11 @@
     <div>
       <mat-form-field>
         <mat-label>Favorite food</mat-label>
-        <mat-select [(ngModel)]="selectedValue" name="food">
+        <mat-select
+          [(ngModel)]="selectedValue"
+          name="food"
+          (selectionChange)="filter($event.value)"
+        >
           <mat-option *ngFor="let item of listFilter" [value]="item">
             {{ item }}
           </mat-option>
@@ -18,7 +22,7 @@
     </div>
   </div>
   <div class="content-list">
-    <div *ngFor="let task of tasks" class="list">
+    <div *ngFor="let task of tasksFilter" class="list">
       <mat-card class="card">
         <mat-card-content class="card-content">
           <div class="task">
@@ -53,6 +57,7 @@
                 class="example-margin"
                 [checked]="task.completed"
                 (change)="completeTask(task)"
+                [disabled]="task.completed"
               ></mat-checkbox>
 
               <button

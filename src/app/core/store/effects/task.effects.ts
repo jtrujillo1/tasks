@@ -8,13 +8,14 @@ import {
   updateTask,
   updateTaskSuccess,
   completeTask,
+  completeTaskSuccess,
 } from './../actions/task.actions';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { TaskService } from 'src/app/services/task.service';
 import { loadTask } from '../actions/task.actions';
 import { catchError, exhaustMap, map, of, switchMap } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { showAlert } from '../common/notification/notification.actions';
+import { showAlert } from '../common/alert/notification.actions';
 
 @Injectable()
 export class TaskEffects {
@@ -118,9 +119,9 @@ export class TaskEffects {
         return this.taskService.completeTask(action.inputData).pipe(
           switchMap((task) => {
             return of(
-              updateTaskSuccess({ inputData: action.inputData }),
+              completeTaskSuccess({ inputData: action.inputData }),
               showAlert({
-                message: 'Tarea actualizada satisfactoriamente.',
+                message: 'Tarea comopletada.',
                 resultType: 'pass',
               })
             );

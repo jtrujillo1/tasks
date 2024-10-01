@@ -1,5 +1,6 @@
 import {
   addTaskSuccess,
+  completeTaskSuccess,
   getTaskSuccess,
   updateTaskSuccess,
 } from './../actions/task.actions';
@@ -45,6 +46,16 @@ const _TaskReducer = createReducer(
     };
   }),
   on(updateTaskSuccess, (state, action) => {
+    const _newData = state.list.map((task) => {
+      return task.id === action.inputData.id ? action.inputData : task;
+    });
+    return {
+      ...state,
+      list: _newData,
+      errorMessage: '',
+    };
+  }),
+  on(completeTaskSuccess, (state, action) => {
     const _newData = state.list.map((task) => {
       return task.id === action.inputData.id ? action.inputData : task;
     });

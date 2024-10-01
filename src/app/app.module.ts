@@ -10,7 +10,7 @@ import { TaskReducer } from './core/store/reducers/task.reducer';
 import { TaskEffects } from './core/store/effects/task.effects';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { notificationEffects } from './core/store/common/notification/notification.effects';
+import { notificationEffects } from './core/store/common/alert/notification.effects';
 
 @NgModule({
   declarations: [AppComponent],

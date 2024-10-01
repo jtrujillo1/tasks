@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Task } from 'src/app/core/interface/task.interface';
 import { Store } from '@ngrx/store';
 import {
+  completeTask,
   getTask,
   loadTask,
   updateTask,
@@ -38,6 +39,7 @@ import { MatIconModule } from '@angular/material/icon';
 export class ListTaskComponent {
   // Definimos el observable:
   tasks: Task[] = [];
+  tasksFilter: Task[] = [];
   selectedValue: string;
   listFilter: string[] = ['Todos', 'Completadas', 'Incompletas'];
   constructor(private readonly store: Store, private dialog: MatDialog) {
@@ -48,12 +50,31 @@ export class ListTaskComponent {
     this.store.dispatch(loadTask());
     this.store.select(getTaskList).subscribe((task) => {
       this.tasks = task;
+      this.tasksFilter = task;
     });
+  }
+  filter(item: string) {
+    switch (item) {
+      case 'Todos':
+        this.tasksFilter = this.tasks;
+        break;
+      case 'Completadas':
+        this.tasksFilter = this.tasks.filter((task) => task.completed == true);
+        break;
+      case 'Incompletas':
+        this.tasksFilter = this.tasks.filter((task) => task.completed == false);
+        break;
+      default:
+        break;
+    }
   }
 
   completeTask(task: Task) {
-    console.log(task);
-    // this.store.dispatch(updateTask({ inputData: task }));
+    const _task: Task = {
+      ...task,
+      completed: true,
+    };
+    this.store.dispatch(completeTask({ inputData: _task }));
   }
 
   addTask() {

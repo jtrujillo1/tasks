@@ -70,6 +70,7 @@ export class AddTaskComponent {
       this.store.select(getTask).subscribe((task) => {
         this.formTask = this.fb.group({
           id: [task.id],
+          completed: [task.completed],
           name: [task.name, Validators.required],
           date: [task.date, Validators.required],
           persons: this.fb.array(
@@ -187,27 +188,19 @@ export class AddTaskComponent {
     this.personSkill(personIndex).removeAt(skillIndex);
   }
 
-  isValidFieldInArray(formArray: FormArray, i: number) {
-    return formArray.controls[i].errors && formArray.controls[i].touched;
-  }
-
-  getFieldError(formArray: FormArray, i: number): string | null {
-    if (!formArray) return null;
-
-    const errors = formArray.controls[i].errors || {};
-
-    for (const key of Object.keys(errors)) {
-      switch (key) {
-        case 'required':
-          return 'Este campo es requerido';
-        case 'min':
-          return 'Debe tener 18 o mas años';
-        case 'minLength':
-          return 'Debe contener masde 5 caracteres';
-        default:
-          return null;
-      }
+  getMessageError(error: any, control: string): string {
+    if (error.controls[control].hasError('min')) {
+      return `El valor minimo debe ser: ${error.controls[control].errors.min.min}`;
     }
-    return null;
+
+    if (error.controls[control].hasError('required')) {
+      return `El campo es requerido`;
+    }
+
+    if (error.controls[control].hasError('minLength')) {
+      return `El campo debe tener minimo ${error.controls[control].errors.min}`;
+    }
+
+    return '';
   }
 }

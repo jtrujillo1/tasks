@@ -2,6 +2,7 @@
   "task": [
     {
       "id": 1,
+      "completed": true,
       "name": "Prueba caso de uso",
       "date": "2024-10-02T05:00:00.000Z",
       "persons": [
@@ -11,6 +12,9 @@
           "skills": [
             {
               "name": "QA Tester"
+            },
+            {
+              "name": "ad"
             }
           ]
         }
@@ -33,11 +37,13 @@
             }
           ]
         }
-      ]
+      ],
+      "completed": true
     },
     {
       "name": "asdadsda",
       "date": "2024-10-01T00:53:39.986Z",
+      "completed": true,
       "persons": [
         {
           "name": "adsdad",
@@ -54,6 +60,7 @@
     {
       "name": "adasdads",
       "date": "2024-10-01T01:02:57.198Z",
+      "completed": false,
       "persons": [
         {
           "name": "adsads",
@@ -66,6 +73,23 @@
         }
       ],
       "id": 4
+    },
+    {
+      "name": "adsad",
+      "date": "2024-10-01T03:59:42.681Z",
+      "completed": false,
+      "persons": [
+        {
+          "name": "asdasa",
+          "age": 34,
+          "skills": [
+            {
+              "name": "asad"
+            }
+          ]
+        }
+      ],
+      "id": 5
     }
   ]
 }
